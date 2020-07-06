@@ -24,6 +24,8 @@ jobs:
     - name: Nerdbank.GitVersioning
       uses: dotnet/nbgv@v0.3.1
       id: nbgv
+      with:
+        setCommonVar: true
       
     - run: echo 'SemVer2 ${{ steps.nbgv.outputs.SemVer2 }}'
     
