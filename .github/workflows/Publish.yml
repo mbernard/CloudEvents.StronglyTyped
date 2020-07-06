@@ -6,14 +6,24 @@ jobs:
   publish:
     name: build, pack & publish
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./src
     steps:
      - uses: actions/checkout@v2
-
-      # - name: Setup dotnet
-      #   uses: actions/setup-dotnet@v1
-      #   with:
-      #     dotnet-version: 3.1.200
+       with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+     
+     - name: Setup .NET Core
+       uses: actions/setup-dotnet@v1
+       with:
+        dotnet-version: 3.1.101
+        
+     - name: Nerdbank.GitVersioning
+       uses: dotnet/nbgv@v0.3.1
+       id: nbgv
+      
+     - run: echo 'SemVer2 ${{ steps.nbgv.outputs.SemVer2 }}'
 
       # Publish
      - name: publish on version change
