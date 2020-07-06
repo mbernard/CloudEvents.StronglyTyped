@@ -15,13 +15,23 @@ jobs:
         working-directory: ./src
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Nerdbank.GitVersioning
+      uses: dotnet/nbgv@v0.3.1
+      with:
+        # The path to the directory for which the version should be determined. This should be at or below the directory containing the version.json file. Default is repo root directory.
+        path: ./src/
+      
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
+        
     - name: Install dependencies
       run: dotnet restore
+      
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      
     - name: Test
       run: dotnet test --no-restore --verbosity normal
