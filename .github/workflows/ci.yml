@@ -23,6 +23,7 @@ jobs:
         
     - name: Nerdbank.GitVersioning
       uses: dotnet/nbgv@v0.3.1
+      run: echo 'SemVer2: ${{ steps.nbgv.outputs.SemVer2 }}'
     
     - name: Install dependencies
       run: dotnet restore
