@@ -6,6 +6,15 @@
     <Nullable>enable</Nullable>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>MBernard.CloudEvents.Typed</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Miguel Bernard</Authors>
+    <Copyright>Miguel Bernard</Copyright>
+    <PackageProjectUrl>https://github.com/mbernard/CloudEvents.Typed</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/mbernard/CloudEvents.Typed</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <Version>1.0.0-alpha</Version>
   </PropertyGroup>
 
   <ItemGroup>
