@@ -27,6 +27,10 @@ stages:
   jobs:
     - job: DeployNuget
       steps:
+        - task: GitVersion@5
+          inputs:
+            runtime: 'core'
+            updateAssemblyInfo: true
         - task: DotNetCoreCLI@2
           name: pack
           inputs:
@@ -35,6 +39,10 @@ stages:
         - task: DotNetCoreCLI@2
           name: deploy
           inputs:
-            command: push
+            command: 'push'
+            packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+            nuGetFeedType: 'external'
+            publishFeedCredentials: 'Nuget'
+
         
 
