@@ -1,9 +1,13 @@
 trigger:
-
-- master
+  batch: true
+  branches:
+    include:
+    - master
 
 pool:
   vmImage: 'ubuntu-latest'
+
+workingDirectory: ./src
 
 steps:
 - task: DotNetCoreCLI@2
