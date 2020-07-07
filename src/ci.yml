@@ -36,5 +36,5 @@ stages:
           name: deploy
           inputs:
             command: push
-        -
+        
 
