@@ -36,10 +36,6 @@ stages:
           inputs:
             command: pack
             projects: '**/*.csproj'
-        - task: NuGetAuthenticate@0
-          inputs:
-            nuGetServiceConnections: 'Nuget'
-            forceReinstallCredentialProvider: true
         - task: NuGetCommand@2
           inputs:
             command: 'push'
