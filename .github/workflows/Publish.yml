@@ -1,6 +1,9 @@
 name: Publish NuGet
 
-on: ['deployment']
+on:
+  release: 
+    types:
+      - created
 
 jobs:
   publish:
