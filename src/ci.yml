@@ -9,11 +9,13 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  name: build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
+  name: test
   inputs:
     command: 'test'
-    projects: '**/*.Test.Unit.csproj'
+    projects: '**/*.Tests.Unit.csproj'
