@@ -7,15 +7,19 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: DotNetCoreCLI@2
-  name: build
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    steps:
+    - task: DotNetCoreCLI@2
+      name: build
+      inputs:
+        command: 'build'
+        projects: '**/*.csproj'
 
-- task: DotNetCoreCLI@2
-  name: test
-  inputs:
-    command: 'test'
-    projects: '**/*.Tests.Unit.csproj'
+    - task: DotNetCoreCLI@2
+      name: test
+      inputs:
+        command: 'test'
+        projects: '**/*.Tests.Unit.csproj'
