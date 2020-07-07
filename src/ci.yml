@@ -7,11 +7,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-workingDirectory: ./src
-
 steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
     projects: '*.csproj'
-    workingDirectory: 'src'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*.Test.Unit.csproj'
