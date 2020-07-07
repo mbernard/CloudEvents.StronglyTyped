@@ -23,3 +23,18 @@ stages:
       inputs:
         command: 'test'
         projects: '**/*.Tests.Unit.csproj'
+- stage: Deploy Prod
+  jobs:
+    - job: DeployNuget
+      steps:
+        - task: DotNetCoreCLI@2
+          name: pack
+          inputs:
+            command: pack
+            projects: '**/*.csproj'
+        - task: DotNetCoreCLI@2
+          name: deploy
+          inputs:
+            command: push
+        -
+
