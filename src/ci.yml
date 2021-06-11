@@ -34,8 +34,12 @@ stages:
         - task: DotNetCoreCLI@2
           name: pack
           inputs:
-            command: pack
-            projects: '**/*.csproj'
+            command: 'pack'
+            packagesToPack: '**/*.csproj'
+            nobuild: true
+            includesymbols: true
+            includesource: true
+            versioningScheme: 'byBuildNumber'
         - task: NuGetCommand@2
           inputs:
             command: 'push'
