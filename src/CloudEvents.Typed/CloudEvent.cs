@@ -1,32 +1,60 @@
 ﻿using System;
 
+using CloudEvents.Typed.Common;
+
 using CloudNative.CloudEvents;
 
 namespace CloudEvents.Typed
 {
-    public class CloudEvent<T>
+    public record CloudEvent<T>(T Data, NonEmptyString Id, Uri Source, NonEmptyString Type)
     {
-        internal CloudEvent(T data, CloudEventId id, Uri source, CloudEventsSpecVersion specVersion, CloudEventType type)
+        public CloudEvent(T data)
+            : this(
+                data,
+                CloudEventConfiguration.IdProvider.GetId(),
+                CloudEventConfiguration.SourceProvider.GetSource<T>(),
+                CloudEventConfiguration.TypeProvider.GetType<T>()) =>
+            this.Time = DateTimeOffset.UtcNow;
+
+        public NonEmptyString? Subject { get; init; }
+
+        public DateTimeOffset? Time { get; init; }
+
+        public static implicit operator CloudEvent<T>(CloudEvent from) => ToCloudEventT(from, (T)from.Data);
+
+        public static implicit operator CloudEvent(CloudEvent<T> from) => ToCloudEvent(from);
+
+        public CloudEvent<TData> Cast<TData>() => ToCloudEventT(this, (TData)((object)this.Data!)!);
+
+        internal static CloudEvent<TData> ToCloudEventT<TData>(CloudEvent from, TData data)
         {
-            this.Data = data;
-            this.Id = id;
-            this.Source = source;
-            this.SpecVersion = specVersion;
-            this.Type = type;
+            var ce = new CloudEvent<TData>(data, from.Id, from.Source, from.Type) { Time = from.Time };
+
+            if (from.Subject is not null)
+            {
+                ce = ce with { Subject = from.Subject };
+            }
+
+            return ce;
         }
 
-        public CloudEventId Id { get; }
+        internal static CloudEvent ToCloudEvent(CloudEvent<T> from)
+        {
+            var ce = new CloudEvent(CloudEventsSpecVersion.Default)
+            {
+                Type = from.Type,
+                Source = from.Source,
+                Id = from.Id,
+                Time = from.Time,
+                Data = from.Data
+            };
 
-        public Uri Source { get; }
+            if (from.Subject is not null)
+            {
+                ce.Subject = from.Subject.Value;
+            }
 
-        public CloudEventsSpecVersion SpecVersion { get; }
-
-        public CloudEventType Type { get; }
-
-        public T Data { get; }
-
-        public CloudEventSubject? Subject { get; set; }
-
-        public CloudEventTime? Time { get; set; }
+            return ce.Validate();
+        }
     }
 }
