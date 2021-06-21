@@ -11,17 +11,27 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Miguel Bernard</Authors>
     <Copyright>Miguel Bernard</Copyright>
-    <PackageProjectUrl>https://github.com/mbernard/CloudEvents.Typed</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/mbernard/CloudEvents.StronglyTyped</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mbernard/CloudEvents.Typed</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <Version>1.0.0-alpha</Version>
     <AssemblyName>MBernard.CloudEvents.StronglyTyped</AssemblyName>
     <RootNamespace>MBernard.CloudEvents.StronglyTyped</RootNamespace>
     <ApplicationIcon>icon.ico</ApplicationIcon>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl />
+    <Description>This project is an opinionated way of using CloudNative.CloudEvents using type safety with generics.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CloudNative.CloudEvents" Version="2.0.0-rc.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
