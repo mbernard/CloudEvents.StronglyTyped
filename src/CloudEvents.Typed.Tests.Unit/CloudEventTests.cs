@@ -63,7 +63,7 @@ namespace CloudEvents.Typed.Tests.Unit
             // serialize
             CloudEvent expected = new CloudEvent<UserCreatedRecordDataContract>(userCreated);
             var formatter = new JsonEventFormatter();
-            var bytes = formatter.EncodeStructuredModeMessage(ce, out var ct);
+            var bytes = formatter.EncodeStructuredModeMessage(expected, out var ct);
             var json = Encoding.Default.GetString(bytes.ToArray());
 
             // When
