@@ -1,10 +1,10 @@
 ﻿using System;
 
-using CloudEvents.Typed.Common;
-
 using CloudNative.CloudEvents;
 
-namespace CloudEvents.Typed
+using MBernard.CloudEvents.StronglyTyped.Common;
+
+namespace MBernard.CloudEvents.StronglyTyped
 {
     public record CloudEvent<T>(T Data, NonEmptyString Id, Uri Source, NonEmptyString Type)
     {

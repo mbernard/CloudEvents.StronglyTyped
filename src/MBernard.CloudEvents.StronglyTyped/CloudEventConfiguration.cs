@@ -1,7 +1,7 @@
-﻿using CloudEvents.Typed.Providers;
-using CloudEvents.Typed.TypeResolvers;
+﻿using MBernard.CloudEvents.StronglyTyped.Providers;
+using MBernard.CloudEvents.StronglyTyped.TypeResolvers;
 
-namespace CloudEvents.Typed
+namespace MBernard.CloudEvents.StronglyTyped
 {
     public static class CloudEventConfiguration
     {

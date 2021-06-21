@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CloudEvents.Typed.Common
+namespace MBernard.CloudEvents.StronglyTyped.Common
 {
     public record NonEmptyString
     {

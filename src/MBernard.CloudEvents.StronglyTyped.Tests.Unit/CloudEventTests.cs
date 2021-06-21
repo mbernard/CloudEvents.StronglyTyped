@@ -5,17 +5,17 @@ using System.Text.Json;
 
 using Bogus;
 
-using CloudEvents.Typed.Tests.Unit.Data;
-using CloudEvents.Typed.TypeResolvers;
-
 using CloudNative.CloudEvents;
 using CloudNative.CloudEvents.SystemTextJson;
 
 using FluentAssertions;
 
+using MBernard.CloudEvents.StronglyTyped.Tests.Unit.Data;
+using MBernard.CloudEvents.StronglyTyped.TypeResolvers;
+
 using Xunit;
 
-namespace CloudEvents.Typed.Tests.Unit
+namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit
 {
     public class CloudEventTests
     {

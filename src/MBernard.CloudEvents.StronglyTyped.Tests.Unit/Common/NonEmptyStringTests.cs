@@ -2,11 +2,11 @@
 
 using Bogus;
 
-using CloudEvents.Typed.Common;
+using MBernard.CloudEvents.StronglyTyped.Common;
 
 using Xunit;
 
-namespace CloudEvents.Typed.Tests.Unit.Common
+namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit.Common
 {
     public class NonEmptyStringTests
     {

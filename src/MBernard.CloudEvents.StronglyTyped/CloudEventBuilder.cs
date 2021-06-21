@@ -1,8 +1,8 @@
 ﻿using System;
 
-using CloudEvents.Typed.Common;
+using MBernard.CloudEvents.StronglyTyped.Common;
 
-namespace CloudEvents.Typed
+namespace MBernard.CloudEvents.StronglyTyped
 {
     public class CloudEventBuilder<T>
         where T : notnull

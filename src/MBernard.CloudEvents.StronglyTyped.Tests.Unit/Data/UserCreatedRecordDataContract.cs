@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace CloudEvents.Typed.Tests.Unit.Data
+namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit.Data
 {
     [DataContract(Namespace = "https://miguelbernard.com/cloudevent.typed", Name = "user.created.v1")]
     public record UserCreatedRecordDataContract

@@ -1,9 +1,9 @@
 ﻿using System;
 
-using CloudEvents.Typed.Common;
-using CloudEvents.Typed.Providers;
+using MBernard.CloudEvents.StronglyTyped.Common;
+using MBernard.CloudEvents.StronglyTyped.Providers;
 
-namespace CloudEvents.Typed.TypeResolvers
+namespace MBernard.CloudEvents.StronglyTyped.TypeResolvers
 {
     public abstract class TypeResolverBase : ITypeResolver
     {

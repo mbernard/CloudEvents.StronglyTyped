@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CloudEvents.Typed.Providers
+namespace MBernard.CloudEvents.StronglyTyped.Providers
 {
     public interface ISourceProvider
     {

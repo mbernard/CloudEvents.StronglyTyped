@@ -1,8 +1,8 @@
 ﻿using System;
 
-using CloudEvents.Typed.Common;
+using MBernard.CloudEvents.StronglyTyped.Common;
 
-namespace CloudEvents.Typed.Providers
+namespace MBernard.CloudEvents.StronglyTyped.Providers
 {
     public class GuidProvider : IIdProvider
     {

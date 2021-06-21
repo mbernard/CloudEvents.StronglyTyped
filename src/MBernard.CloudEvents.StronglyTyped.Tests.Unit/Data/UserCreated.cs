@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CloudEvents.Typed.Tests.Unit.Data
+namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit.Data
 {
     public class UserCreated
     {

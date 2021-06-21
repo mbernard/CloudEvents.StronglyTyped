@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Reflection;
-
-using CloudEvents.Typed.TypeResolvers;
 
 using CloudNative.CloudEvents;
 
-namespace CloudEvents.Typed
+using MBernard.CloudEvents.StronglyTyped.TypeResolvers;
+
+namespace MBernard.CloudEvents.StronglyTyped
 {
     public static class CloudEventExtensions
     {

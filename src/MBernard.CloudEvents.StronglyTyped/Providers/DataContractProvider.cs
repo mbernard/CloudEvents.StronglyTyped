@@ -2,9 +2,9 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 
-using CloudEvents.Typed.Common;
+using MBernard.CloudEvents.StronglyTyped.Common;
 
-namespace CloudEvents.Typed.Providers
+namespace MBernard.CloudEvents.StronglyTyped.Providers
 {
     public class DataContractProvider : ISourceProvider, ITypeProvider
     {
