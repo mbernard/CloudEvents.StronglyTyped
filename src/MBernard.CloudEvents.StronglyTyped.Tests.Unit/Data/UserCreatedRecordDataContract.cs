@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit.Data
 {
-    [DataContract(Namespace = "https://miguelbernard.com/cloudevent.typed", Name = "user.created.v1")]
+    [DataContract(Namespace = "https://miguelbernard.com/cloudevent.stronglytyped", Name = "user.created.v1")]
     public record UserCreatedRecordDataContract
     {
         [DataMember]
