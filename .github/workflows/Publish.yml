@@ -16,14 +16,9 @@ jobs:
      - uses: actions/checkout@v2
        with:
           fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
-     
-     - name: Setup .NET Core
-       uses: actions/setup-dotnet@v1
-       with:
-        dotnet-version: 3.1.101
         
      - name: Nerdbank.GitVersioning
-       uses: dotnet/nbgv@v0.3.1
+       uses: dotnet/nbgv@v0.4
        id: nbgv
       
      - run: echo 'SemVer2 ${{ steps.nbgv.outputs.SemVer2 }}'
@@ -34,10 +29,10 @@ jobs:
        uses: rohith/publish-nuget@v2
        with:
           # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: CloudEvents.Typed/CloudEvents.Typed.csproj
+          PROJECT_FILE_PATH: MBernard.CloudEvents.StronglyTyped/MBernard.CloudEvents.StronglyTyped.csproj
           
           # NuGet package id, used for version detection & defaults to project name
-          PACKAGE_NAME: MBernard.CloudEvents.Typed
+          PACKAGE_NAME: MBernard.CloudEvents.StronglyTyped
           
           # Filepath with version info, relative to root of repository & defaults to PROJECT_FILE_PATH
           # VERSION_FILE_PATH: Directory.Build.props
