@@ -11,6 +11,10 @@ namespace MBernard.CloudEvents.StronglyTyped
 
         public static ITypeProvider TypeProvider { get; set; } = new DataContractProvider();
 
+        public static ITimeProvider TimeProvider { get; set; } = new UtcNowProvider();
+
+        public static ISubjectProvider SubjectProvider { get; set; } = new NullProvider();
+
         public static ITypeResolver TypeResolver { get; set; } = new InMemoryTypeResolver();
     }
 }

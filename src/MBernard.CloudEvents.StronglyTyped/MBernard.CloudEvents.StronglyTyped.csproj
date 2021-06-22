@@ -20,11 +20,13 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl />
-    <Description>This project is an opinionated way of using CloudNative.CloudEvents using type safety with generics.</Description>
+    <Description>
+      An opinionated library that removes some friction of the CloudNative.CloudEvents C# SDK by providing a strongly typed implementation of the CloudEvent&lt;T&gt; class. The library also provides multiple utils to manipulate, transform and create CloudEvents.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CloudNative.CloudEvents" Version="2.0.0-rc.1" />
+    <PackageReference Include="CloudNative.CloudEvents" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

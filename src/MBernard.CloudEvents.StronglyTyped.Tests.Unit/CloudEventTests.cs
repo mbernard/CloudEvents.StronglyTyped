@@ -32,7 +32,8 @@ namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit
                 Id = p.Random.Guid()
             };
 
-            var expected = new CloudEventBuilder<UserCreatedRecordDataContract>(userCreatedDataContract).Build();
+            var expected = new CloudEventBuilder<UserCreatedRecordDataContract>().WithData(userCreatedDataContract)
+                .Build();
             var formatter = new JsonEventFormatter<UserCreatedRecordDataContract>();
             var bytes = formatter.EncodeStructuredModeMessage(expected, out var ct);
 
@@ -69,7 +70,7 @@ namespace MBernard.CloudEvents.StronglyTyped.Tests.Unit
             // When
             var e = formatter.DecodeStructuredModeMessage(bytes, ct, new CloudEventAttribute[0]);
 
-            object Transformer(CloudEvent cloudEvent, Type type)
+            static object Transformer(CloudEvent cloudEvent, Type type)
             {
                 var b = ((JsonElement)cloudEvent.Data).GetRawText();
                 return JsonSerializer.Deserialize(b, type);

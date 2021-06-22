@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 using CloudNative.CloudEvents;
 
@@ -6,27 +7,46 @@ using MBernard.CloudEvents.StronglyTyped.Common;
 
 namespace MBernard.CloudEvents.StronglyTyped
 {
-    public record CloudEvent<T>(T Data, NonEmptyString Id, Uri Source, NonEmptyString Type)
+    public record CloudEvent<T>
+        where T : notnull
     {
-        public CloudEvent(T data)
-            : this(
-                data,
-                CloudEventConfiguration.IdProvider.GetId(),
-                CloudEventConfiguration.SourceProvider.GetSource<T>(),
-                CloudEventConfiguration.TypeProvider.GetType<T>()) =>
-            this.Time = DateTimeOffset.UtcNow;
+        public CloudEvent(T data, NonEmptyString? id = null, Uri? source = null, NonEmptyString? type = null)
+        {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data), "Data cannot be null");
+            }
+
+            this.Data = data;
+            this.Id = id ?? CloudEventConfiguration.IdProvider.GetId();
+            this.Source = source ?? CloudEventConfiguration.SourceProvider.GetSource<T>();
+            this.Type = type ?? CloudEventConfiguration.TypeProvider.GetType<T>();
+            this.Time = CloudEventConfiguration.TimeProvider.GetTime();
+            this.Subject = CloudEventConfiguration.SubjectProvider.GetSubject();
+        }
 
         public NonEmptyString? Subject { get; init; }
 
         public DateTimeOffset? Time { get; init; }
 
+        public T Data { get; init; }
+
+        public NonEmptyString Id { get; init; }
+
+        public Uri Source { get; init; }
+
+        public NonEmptyString Type { get; init; }
+
         public static implicit operator CloudEvent<T>(CloudEvent from) => ToCloudEventT(from, (T)from.Data);
 
         public static implicit operator CloudEvent(CloudEvent<T> from) => ToCloudEvent(from);
 
-        public CloudEvent<TData> Cast<TData>() => ToCloudEventT(this, (TData)((object)this.Data!)!);
+        public CloudEvent<TData> Cast<TData>()
+            where TData : notnull =>
+            ToCloudEventT(this, (TData)((object)this.Data!)!);
 
         internal static CloudEvent<TData> ToCloudEventT<TData>(CloudEvent from, TData data)
+            where TData : notnull
         {
             var ce = new CloudEvent<TData>(data, from.Id, from.Source, from.Type) { Time = from.Time };
 
