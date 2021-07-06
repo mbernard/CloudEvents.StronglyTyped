@@ -16,11 +16,11 @@ The library also provides multiple utils to manipulate, transform and create Clo
 * Avoid confusion regarding the content of the Data property of a CloudEvent
 * Modern design using C# 9 records
 * Structural equality
-* Intended to be used and passed around in your application business domain layer (carries all the metadata you need without the serialization information)
+* Intended to be used in your application business domain layer (carries all the metadata you need without the serialization information)
 * Very opinionated
 
 # In a nutshell
 
-## TODO image here
+![cloudevents layers](https://blog.miguelbernard.com/_next/image?url=https%3A%2F%2Fcms.miguelbernard.com%2Fcontent%2Fimages%2F2021%2F07%2FCloudEvents-Layers-1.png&w=3120&q=75)
 
 
